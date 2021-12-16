@@ -1,0 +1,49 @@
+@charset "UTF-8";
+.form{
+    max-width: 900px;
+    padding: 40px 15% 60px;
+}
+.tb-pd{
+    padding: 40px 30px 60px;
+}
+.disblock{
+    display: block;
+}
+.io-input{
+    outline: 0px;
+}
+.comp{
+    min-height: 150px;
+    margin-bottom: 15px;
+}
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    
+}
+input[type=number] { 
+   -moz-appearance: textfield;
+   appearance: textfield;
+
+}
+
+@media (max-width:575px){
+    .mininav{
+        justify-content: stretch;
+    }
+    .mininav-1{
+        flex: 1 1;
+    }
+    .form{
+        padding: 20px;
+    }
+}
+@media (min-width:576px){
+    .tb-pd{
+        padding: 40px 5% 60px;
+    }
+}
+@media (min-width:992px){
+    .tb-pd{
+        padding: 40px 15% 60px;
+    }
+}
