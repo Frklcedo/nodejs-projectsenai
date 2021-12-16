@@ -15,7 +15,18 @@ app.use(express.static('public'));
 app.get('/', function(request,response){
     response.render('index');
 });
-
+app.get('/doces', function(request,response){
+    response.render('doces');
+});
+app.get('/salgados', function(request,response){
+    response.render('salgados');
+});
+app.get('/pedidos', function(request,response){
+    response.render('pedidos');
+});
+app.get('/tabela-nutricional', function(request,response){
+    response.render('tbnutri');
+});
 
 // port
 app.listen(3000);
