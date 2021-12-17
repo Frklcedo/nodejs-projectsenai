@@ -15,6 +15,12 @@ app.use(express.static('public'));
 app.get('/', function(request,response){
     response.render('index');
 });
+app.get('/entrar', function(request,response){
+    response.render('entrar');
+});
+app.get('/registrar', function(request,response){
+    response.render('registrar');
+});
 app.get('/doces', function(request,response){
     response.render('doces');
 });

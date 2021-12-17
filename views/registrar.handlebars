@@ -1,0 +1,78 @@
+<main class="container mx-auto form bg-light shadow-sm">
+    <form method="post" class="row text-center">
+        <label class="col-12-xm disblock h4 mb-4">
+            Registro do cliente
+        </label>
+        <label class="col-12-xm disblock" for="nomeCliente">
+            Seu nome
+        </label>
+        <input class="shadow-sm col-12-xm io-input border-0 border-bottom p-2" type="text" name="nomeCliente" placeholder="Exemplo dos Santos" required>
+        <label class="col-12-xm disblock" for="email">
+           Seu E-mail
+        </label>
+        <input class="shadow-sm col-12-xm io-input border-0 border-bottom p-2" type="email" name="email" placeholder="exemplo@mail.com" required>
+        <label class="col-12-xm disblock" for="senhaCliente">
+            Sua senha
+        </label>
+        <input class="shadow-sm col-12-xm io-input border-0 border-bottom p-2 mb-5" type="password" name="senhaCliente" placeholder="********" required>
+        <hr>
+        <label class="col-12-xm disblock h4 mb-4">
+            Endereço
+        </label>
+        <label class="col-12-xm disblock" for="cep">
+            CEP
+        </label>
+        <input class="shadow-sm col-12-xm io-input border-0 border-bottom p-2 text-center" type="text" name="cep" placeholder="4X-XXX-XXX" maxlength="10" required>
+        <label class="col-9-xm disblock mt-4" for="address">
+            Endereço/Logradouro
+        </label>
+        <input class="shadow-sm col-9-xm io-input border-0 border-bottom p-2" type="text" name="address" placeholder="Rua, Alameda, Caminho etc" required>
+        <label class="col-3-xm disblock mt-4" for="numaddress">
+            nº
+        </label>
+        <input class="shadow-sm col-3-xm io-input border-0 border-bottom p-2" type="number" name="numaddress" placeholder="19, 1000, 71..." min="1" required>
+        <label class="col-12-xm disblock mt-4" for="comp">
+            Complemento
+        </label>
+        <textarea class="shadow-sm comp col-12-xm io-input border-0 border-bottom p-2" name="comp" placeholder="Informações de possível importância..."></textarea>
+        <label class="col-12-xm disblock mt-4" for="cidade">
+            Cidade
+        </label>
+        <input class="shadow-sm col-9-xm io-input border-0 border-bottom p-2" type="text" name="cidade" placeholder="São Paulo, Rio de Janeiro, Salvador..." required>
+        <label class="col-8-xm disblock mt-4" for="estado">
+            Estado
+        </label>
+        <select class="shadow-sm col-4-xm io-input border-0 border-bottom p-2" name="estado" required>
+            <option selected disabled>Selecione UF</option>
+            <option value="AC">AC</option>
+            <option value="AL">AL</option>
+            <option value="AP">AP</option>
+            <option value="AM">AM</option>
+            <option value="BA">BA</option>
+            <option value="CE">CE</option>
+            <option value="DF">DF</option>
+            <option value="ES">ES</option>
+            <option value="GO">GO</option>
+            <option value="MA">MA</option>
+            <option value="MG">MG</option>
+            <option value="MS">MS</option>
+            <option value="MT">MT</option>
+            <option value="PA">PA</option>
+            <option value="PB">PB</option>
+            <option value="PE">PE</option>
+            <option value="PR">PR</option>
+            <option value="PI">PI</option>
+            <option value="RJ">RJ</option>
+            <option value="RN">RN</option>
+            <option value="RO">RO</option>
+            <option value="RR">RR</option>
+            <option value="RS">RS</option>
+            <option value="SC">SC</option>
+            <option value="SP">SP</option>
+            <option value="SE">SE</option>
+            <option value="TO">TO</option>
+        </select>
+        <hr class="mt-4">
+        <input class="shadow container btn btn-outline-danger btn-block" type="submit" value="Enviar">
+    </form>
+</main>
