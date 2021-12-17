@@ -27,6 +27,22 @@ app.get('/pedidos', function(request,response){
 app.get('/tabela-nutricional', function(request,response){
     response.render('tbnutri');
 });
+// user variables
+app.get('/:user', function(request,response){
+    response.render('index');
+});
+app.get('/doces/:user', function(request,response){
+    response.render('doces');
+});
+app.get('/salgados/:user', function(request,response){
+    response.render('salgados');
+});
+app.get('/pedidos/:user', function(request,response){
+    response.render('pedidos');
+});
+app.get('/tabela-nutricional/:user', function(request,response){
+    response.render('tbnutri');
+});
 
 // port
 app.listen(3000);
