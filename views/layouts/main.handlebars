@@ -40,28 +40,52 @@
     <nav
       class="mininav navbar navbar-expand-sm container-fluid bg-danger text-white navbar-light"
     >
-      <ul class="navbar-nav nav-pills justify-content-center mininav-1">
-        <li class="nav-item text-center m-1">
-          <a href="/" class="nav-link bg-white d-grid p-0"><button
-              type="button"
-              class="btn btn-outline-danger btn-block"
-            >Home</button></a>
+      <div class="rightbutton navbar-nav nav-pills justify-content-center mininav-1">
+        <li class="nav-item text-center m-1 rightbutton-li-top">
+          <ul class="navbar-nav nav-pills justify-content-center mininav-1">
+            <li class="nav-item text-center m-1">
+              <a href="/" class="nav-link bg-white d-grid p-0"><button
+                  type="button"
+                  class="btn btn-outline-danger btn-block"
+                >Home</button></a>
+            </li>
+            <li class="nav-item text-center m-1">
+              <a href="/pedidos" class="nav-link bg-white d-grid gap-3 p-0"><button
+                  type="button"
+                  class="btn btn-outline-danger btn-block"
+                >Pedidos</button></a>
+            </li>
+            <li class="nav-item text-center m-1">
+              <a
+                href="/tabela-nutricional"
+                class="nav-link bg-white d-grid gap-3 p-0"
+              ><button type="button" class="btn btn-outline-danger btn-block">Tabela
+                  nutricional</button></a>
+            </li>
+          </ul>
         </li>
-        <li class="nav-item text-center m-1">
-          <a href="/pedidos" class="nav-link bg-white d-grid gap-3 p-0"><button
-              type="button"
-              class="btn btn-outline-danger btn-block"
-            >Pedidos</button></a>
+        <li class="nav-item text-center m-1 rightbutton-li-bot">
+          <ul class="navbar-nav nav-pills justify-content-center mininav-1 rightbutton-ul-bot">
+            <li class="nav-item text-center m-1">
+              <a href="/entrar" class="nav-link bg-white d-grid p-0"><button
+                  type="button"
+                  class="btn btn-outline-danger btn-block"
+                >Entrar</button></a>
+            </li>
+            <li class="nav-item text-center m-1">
+              <a
+                href="/registrar"
+                class="nav-link bg-white d-grid gap-3 p-0"
+              ><button
+                  type="button"
+                  class="btn btn-outline-danger btn-block"
+                >Registrar</button></a>
+            </li>
+          </ul>
         </li>
-        <li class="nav-item text-center m-1">
-          <a
-            href="/tabela-nutricional"
-            class="nav-link bg-white d-grid gap-3 p-0"
-          ><button type="button" class="btn btn-outline-danger btn-block">Tabela
-              nutricional</button></a>
-        </li>
-      </ul>
+      </div>
     </nav>
+
     {{{body}}}
 
     <footer class="container-fluid text-center pt-5 pb-4 bg-danger text-white">

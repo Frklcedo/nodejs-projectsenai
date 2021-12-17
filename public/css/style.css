@@ -16,6 +16,12 @@
     min-height: 150px;
     margin-bottom: 15px;
 }
+.userbutton{
+    margin-right: 0;
+    margin-left: auto;
+}
+
+
 input[type=number]::-webkit-inner-spin-button { 
     -webkit-appearance: none;
     
@@ -36,10 +42,23 @@ input[type=number] {
     .form{
         padding: 20px;
     }
+    .rightbutton-li-top{
+        margin-bottom: 0 !important;
+    }
+    .rightbutton-li-bot{
+        margin-top: 0 !important;
+    }
+    .rightbutton-ul-bot{
+        padding-top: 0px;
+    }
 }
 @media (min-width:576px){
     .tb-pd{
         padding: 40px 5% 60px;
+    }
+    .rightbutton{
+        justify-content: space-between !important;
+        width: 100%;
     }
 }
 @media (min-width:992px){
@@ -51,8 +70,4 @@ input[type=number] {
 h1 {
     display: flex;
     
-}
-.userbutton{
-    margin-right: 0;
-    margin-left: auto;
 }
