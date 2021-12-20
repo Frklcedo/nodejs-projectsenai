@@ -181,8 +181,16 @@ app.get('/tabela-nutricional/:user', function(request,response){
     response.render('tbnutri');
 });
 app.get('/seuspedidos/:user', function(request,response){
+    Pedidos.findAll({
+        where: {
+            email: user.email
+        }
+    }).then(function(pedidos){
+        response.render('seuspedidos', { pedidos: pedidos});
+    });
     response.render('seuspedidos');
-});
+}
+);
 
 function send(n,e,p,pp) {
     let getName = n
