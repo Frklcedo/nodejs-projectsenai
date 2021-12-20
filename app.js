@@ -62,43 +62,44 @@ var user = {
     cidade: '',
     estado: ''
 }
+var online = false;
 
 app.use(bodyParser.json());
 app.use(urlencoded({ extended: false }));
 app.use(express.static('public'));
 // get and post
 app.get('/', function(request,response){
-    response.render('index');
+    response.render('index', { nome: user.nome, online: online  });
 });
 app.get('/entrar', function(request,response){
-    response.render('entrar');
+    response.render('entrar', { nome: user.nome, online: online  });
 });
 app.get('/registrar', function(request,response){
-    response.render('registrar');
+    response.render('registrar', { nome: user.nome, online: online  });
 });
 app.get('/doces', function(request,response){
-    response.render('doces');
+    response.render('doces', { nome: user.nome, online: online  });
 });
 app.get('/salgados', function(request,response){
-    response.render('salgados');
+    response.render('salgados', { nome: user.nome, online: online  });
 });
 app.get('/pedidos', function(request,response){
-    response.render('pedidos');
+    response.render('pedidos', { nome: user.nome, online: online  });
 });
 app.get('/tabela-nutricional', function(request,response){
-    response.render('tbnutri');
+    response.render('tbnutri', { nome: user.nome, online: online  });
 });
 app.get('/seuspedidos', function(request,response){
-    response.render('seuspedidos');
+    response.render('seuspedidos', { nome: user.nome, online: online  });
 });
 
 app.post('/registrar', function(request, response){
     if(!send(request.body.nome,request.body.email,request.body.senha, request.body.confirmsenha)){
-                response.render('registrar',{msg: 'Não fui possível fazer o registro da conta: as senhas precisam ser iguais'});
+                response.render('registrar',{nome: user.nome, online: online  ,msg: 'Não fui possível fazer o registro da conta: as senhas precisam ser iguais'});
     }
     Usuarios.findOne({ where: { email: request.body.email }}).then(function(user){
             if(user != null){        
-                response.render('registrar',{msg: 'Não fui possível fazer o registro da conta: o e-mail fornecido já está em uso'});
+                response.render('registrar',{nome: user.nome, online: online  ,msg: 'Não fui possível fazer o registro da conta: o e-mail fornecido já está em uso'});
             }
     }).catch();
     Usuarios.create({
@@ -112,9 +113,9 @@ app.post('/registrar', function(request, response){
         cidade: request.body.cidade,
         estado: request.body.estado        
     }).then(function(){
-        response.render('registrar',{ msg: 'Registro feito com sucesso'});
+        response.render('registrar',{nome: user.nome, online: online , msg: 'Registro feito com sucesso'});
     }).catch(function(){
-        response.render('registrar',{msg: 'Não fui possível fazer o registro da conta'});
+        response.render('registrar',{nome: user.nome, online: online ,msg: 'Não fui possível fazer o registro da conta'});
     });
 });
 app.post('/pedidos', function(request, response){
@@ -131,12 +132,16 @@ app.post('/pedidos', function(request, response){
         complementoProdutos: request.body.comporder
     }).then(function(){
         response.render('pedidos', {
-            msg: 'Pedido feito com sucesso'
+            nome: user.nome ,
+            msg: 'Pedido feito com sucesso',
+            online: online 
         });
     }).catch(function(){
         response.render('pedidos', {
+            nome: user.nome ,
             msg: 'Não foi possível realizar o pedido',
-            msg2: 'Tente novamente mais tarde'
+            msg2: 'Tente novamente mais tarde', 
+            online: online 
         });
     });
 });
@@ -157,28 +162,45 @@ app.post('/entrar', function(request,response){
             cidade: usuario.cidade,
             estado: usuario.estado
         }
-        response.redirect(path());        
+        online = true;
+        response.redirect('/' + user.nome);        
     }).catch(function(){
-        response.render('entrar', { msg: 'E-mail ou senhas incorretos'});
+        response.render('entrar', { nome: user.nome, online: online ,msg: 'E-mail ou senhas incorretos'});
     });
 
+});
+app.get('/sair/:user', function(request, response){
+    user = {
+        id: null,
+        nome: '',
+        email: '',
+        senha: '',
+        cep: '',
+        logradouro: '',
+        numeroLogradouro: '',
+        complementoLogradouro: '',
+        cidade: '',
+        estado: ''
+    }
+    online = false;
+    response.redirect('/');
 });
 
 // user variables
 app.get('/:user', function(request,response){
-    response.render('index', { nome: user.nome });
+    response.render('index', { nome: user.nome, online: online  });
 });
 app.get('/doces/:user', function(request,response){
-    response.render('doces');
+    response.render('doces', { nome: user.nome, online: online });
 });
 app.get('/salgados/:user', function(request,response){
-    response.render('salgados');
+    response.render('salgados', { nome: user.nome, online: online  });
 });
 app.get('/pedidos/:user', function(request,response){
-    response.render('pedidos');
+    response.render('pedidos', { nome: user.nome, online: online  });
 });
 app.get('/tabela-nutricional/:user', function(request,response){
-    response.render('tbnutri');
+    response.render('tbnutri', { nome: user.nome, online: online  });
 });
 app.get('/seuspedidos/:user', function(request,response){
     Pedidos.findAll({
@@ -186,9 +208,9 @@ app.get('/seuspedidos/:user', function(request,response){
             email: user.email
         }
     }).then(function(pedidos){
-        response.render('seuspedidos', { pedidos: pedidos});
+        response.render('seuspedidos', { pedidos: pedidos, nome: user.nome, online: online });
     });
-    response.render('seuspedidos');
+    response.render('seuspedidos', { pedidos: pedidos, nome: user.nome, online: online });
 }
 );
 

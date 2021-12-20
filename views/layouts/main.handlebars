@@ -39,33 +39,57 @@
               ><button type="button" class="btn btn-outline-danger btn-block">Tabela
                   nutricional</button></a>
             </li>
+            {{#if online}}
             <li class="nav-item text-center m-1">
               <a
                 href="/seuspedidos"
                 class="nav-link bg-white d-grid gap-3 p-0"
               ><button type="button" class="btn btn-outline-danger btn-block">Seus Pedidos</button></a>
             </li>
+            {{/if}}
           </ul>
         </li>
-        <li class="nav-item text-center m-1 rightbutton-li-bot">
-          <ul class="navbar-nav nav-pills justify-content-center mininav-1 rightbutton-ul-bot">
-            <li class="nav-item text-center m-1">
-              <a href="/entrar" class="nav-link bg-white d-grid p-0"><button
-                  type="button"
-                  class="btn btn-outline-danger btn-block"
-                >Entrar</button></a>
-            </li>
-            <li class="nav-item text-center m-1">
-              <a
-                href="/registrar"
-                class="nav-link bg-white d-grid gap-3 p-0"
-              ><button
-                  type="button"
-                  class="btn btn-outline-danger btn-block"
-                >Registrar</button></a>
-            </li>
-          </ul>
-        </li>
+        {{#if online}}
+          <li class="nav-item text-center m-1 rightbutton-li-bot">
+            <ul class="navbar-nav nav-pills justify-content-center mininav-1 rightbutton-ul-bot">
+              <li class="nav-item text-center m-1">
+                <a href="/entrar" class="nav-link bg-white d-grid p-0"><button
+                    type="button"
+                    class="btn btn-outline-danger btn-block"
+                  >{{nome}}</button></a>
+              </li>
+              <li class="nav-item text-center m-1">
+                <a
+                  href="/sair"
+                  class="nav-link bg-white d-grid gap-3 p-0"
+                ><button
+                    type="button"
+                    class="btn btn-outline-danger btn-block"
+                  >Sair</button></a>
+              </li>
+            </ul>
+          </li>    
+        {{else}}
+          <li class="nav-item text-center m-1 rightbutton-li-bot">
+            <ul class="navbar-nav nav-pills justify-content-center mininav-1 rightbutton-ul-bot">
+              <li class="nav-item text-center m-1">
+                <a href="/entrar" class="nav-link bg-white d-grid p-0"><button
+                    type="button"
+                    class="btn btn-outline-danger btn-block"
+                  >Entrar</button></a>
+              </li>
+              <li class="nav-item text-center m-1">
+                <a
+                  href="/registrar"
+                  class="nav-link bg-white d-grid gap-3 p-0"
+                ><button
+                    type="button"
+                    class="btn btn-outline-danger btn-block"
+                  >Registrar</button></a>
+              </li>
+            </ul>
+          </li>
+        {{/if}}
       </div>
     </nav>
 
