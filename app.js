@@ -157,7 +157,7 @@ app.post('/entrar', function(request,response){
             cidade: usuario.cidade,
             estado: usuario.estado
         }
-        response.redirect('/' + user.nome);        
+        response.redirect(path());        
     }).catch(function(){
         response.render('entrar', { msg: 'E-mail ou senhas incorretos'});
     });
@@ -223,6 +223,18 @@ function send(n,e,p,pp) {
 
 }
 
+function path() {
+
+    if(user.nome == ''){
+
+        return '/';
+
+    }else{
+
+        return '/' + user.nome;
+    }
+
+}
 
 
 // port
