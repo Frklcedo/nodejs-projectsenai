@@ -10,10 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.1",
-    "express": "^4.17.1",
+    "express": "^4.17.2",
     "express-handlebars": "^6.0.2",
     "mariadb": "^2.5.5",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.12.0-beta.3"
+    "sequelize": "^6.12.0"
   }
 }

@@ -1,20 +1,24 @@
 <main class="container mx-auto form bg-light shadow-sm">
-    <form method="post" class="row text-center">
+    <form method="post" class="row text-center" onsubmit="send()">
         <label class="col-12-xm disblock h4 mb-4">
             Registro do cliente
         </label>
-        <label class="col-12-xm disblock" for="nome">
+        <label class="col-12-xm disblock" for="nome" id="boxName">
             Seu nome
         </label>
-        <input class="shadow-sm col-12-xm io-input border-0 border-bottom p-2" type="text" name="nome" placeholder="Exemplo dos Santos" required>
+        <input class="shadow-sm col-12-xm io-input border-0 border-bottom p-2 mb-3" type="text" name="nome" placeholder="Exemplo dos Santos" required>
         <label class="col-12-xm disblock" for="email">
            Seu E-mail
         </label>
-        <input class="shadow-sm col-12-xm io-input border-0 border-bottom p-2" type="email" name="email" placeholder="exemplo@mail.com" required>
+        <input class="shadow-sm col-12-xm io-input border-0 border-bottom p-2 mb-3" type="email" name="email" placeholder="exemplo@mail.com" required>
         <label class="col-12-xm disblock" for="senha">
             Sua senha
         </label>
-        <input class="shadow-sm col-12-xm io-input border-0 border-bottom p-2 mb-5" type="password" name="senha" placeholder="********" required>
+        <input class="shadow-sm col-12-xm io-input border-0 border-bottom p-2 mb-3" type="password" id="boxPassword" name="senha" placeholder="********" required>
+        <label class="col-12-xm disblock" for="confirmsenha">
+            Confirmar senha
+        </label>
+        <input class="shadow-sm col-12-xm io-input border-0 border-bottom p-2 mb-5" type="password" id="boxConfirmPassword" name="confirmsenha" placeholder="********" required>
         <hr>
         <label class="col-12-xm disblock h4 mb-4">
             Endereço
@@ -73,6 +77,6 @@
             <option value="TO">TO</option>
         </select>
         <hr class="mt-4">
-        <input class="shadow container btn btn-outline-danger btn-block" type="submit" value="Enviar">
+        <input class="shadow container btn btn-outline-danger btn-block" type="submit" onclick="send()" value="Enviar">
     </form>
 </main>
