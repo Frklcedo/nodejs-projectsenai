@@ -1,5 +1,6 @@
 <main class="container mx-auto form bg-light shadow-sm">
-    <form method="post" class="row text-center">
+    {{msg}} 
+    <form action="/registrar" method="post" class="row text-center">
         <label class="col-12-xm disblock h4 mb-4">
             Registro do cliente
         </label>
@@ -30,7 +31,7 @@
         <label class="col-3-xm disblock mt-4" for="numaddress">
             nº
         </label>
-        <input class="shadow-sm col-3-xm io-input border-0 border-bottom p-2" type="number" name="numaddress" placeholder="19, 1000, 71..." min="1" required>
+        <input class="shadow-sm col-3-xm io-input border-0 border-bottom p-2" type="text" name="numaddress" placeholder="19, 1000, 71..." min="1" required>
         <label class="col-12-xm disblock mt-4" for="comp">
             Complemento
         </label>
