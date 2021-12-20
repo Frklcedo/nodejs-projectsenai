@@ -41,3 +41,7 @@ const Pedidos = db.sequelize.define('pedidos', {
         type: db.Sequelize.TEXT
     } 
 });
+
+Pedidos.sync({ alter: true });
+
+module.exports = Pedidos;
