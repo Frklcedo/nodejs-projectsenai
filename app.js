@@ -67,7 +67,7 @@ app.use(urlencoded({ extended: false }));
 app.use(express.static('public'));
 // get and post
 app.get('/', function(request,response){
-    response.render('index', {msg : msg});
+    response.render('index');
 });
 app.get('/entrar', function(request,response){
     response.render('entrar');
@@ -89,6 +89,11 @@ app.get('/tabela-nutricional', function(request,response){
 });
 
 app.post('/registrar', function(request, response){
+    Usuarios.findOne({ where: { email: request.body.email }}).then(function(user){
+            if(user != null){        
+                response.render('registrar',{msg: 'Não fui possível fazer o registro da conta'});
+            }
+    }).catch();
     Usuarios.create({
         nome: request.body.nome,
         email: request.body.email,
@@ -100,7 +105,6 @@ app.post('/registrar', function(request, response){
         cidade: request.body.cidade,
         estado: request.body.estado        
     }).then(function(){
-
         response.render('registrar',{ msg: 'Registro feito com sucesso'});
     }).catch(function(){
         response.render('registrar',{msg: 'Não fui possível fazer o registro da conta'});
@@ -130,7 +134,7 @@ app.post('/pedidos', function(request, response){
     });
 });
 app.post('/entrar', function(request,response){
-    
+    const emailUser = Usuarios.findOne();
 });
 
 // user variables
