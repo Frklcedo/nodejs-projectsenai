@@ -51,15 +51,16 @@ Usuarios.findAll({
 
 // Variáveis globais
 var user = {
-    nome: null,
-    email: null,
-    senha: null,
-    cep: null,
-    logradouro: null,
-    numeroLogradouro: null,
-    complementoLogradouro: null,
-    cidade: null,
-    estado: null
+    id: null,
+    nome: '',
+    email: '',
+    senha: '',
+    cep: '',
+    logradouro: '',
+    numeroLogradouro: '',
+    complementoLogradouro: '',
+    cidade: '',
+    estado: ''
 }
 
 app.use(bodyParser.json());
@@ -92,13 +93,16 @@ app.get('/seuspedidos', function(request,response){
 });
 
 app.post('/registrar', function(request, response){
+    if(!send(request.body.nome,request.body.email,request.body.senha, request.body.confirmsenha)){
+                response.render('registrar',{msg: 'Não fui possível fazer o registro da conta: as senhas precisam ser iguais'});
+    }
     Usuarios.findOne({ where: { email: request.body.email }}).then(function(user){
             if(user != null){        
-                response.render('registrar',{msg: 'Não fui possível fazer o registro da conta'});
+                response.render('registrar',{msg: 'Não fui possível fazer o registro da conta: o e-mail fornecido já está em uso'});
             }
     }).catch();
     Usuarios.create({
-        nome: request.body.nome,
+        nome: request.body.nome, 
         email: request.body.email,
         senha: request.body.senha,
         cep: request.body.cep,
@@ -137,12 +141,32 @@ app.post('/pedidos', function(request, response){
     });
 });
 app.post('/entrar', function(request,response){
-    const emailUser = Usuarios.findOne();
+    Usuarios.findOne({ where: { 
+        email: request.body.email,
+        senha: request.body.senha
+    }}).then(function(usuario){
+        user = {
+            id: usuario.id,
+            nome: usuario.nome,
+            email: usuario.email,
+            senha: usuario.senha,
+            cep: usuario.cep,
+            logradouro: usuario.logradouro,
+            numeroLogradouro: usuario.numeroLogradouro,
+            complementoLogradouro: usuario.complementoLogradouro,
+            cidade: usuario.cidade,
+            estado: usuario.estado
+        }
+        response.redirect('/' + user.nome);        
+    }).catch(function(){
+        response.render('entrar', { msg: 'E-mail ou senhas incorretos'});
+    });
+
 });
 
 // user variables
 app.get('/:user', function(request,response){
-    response.render('index');
+    response.render('index', { nome: user.nome });
 });
 app.get('/doces/:user', function(request,response){
     response.render('doces');
@@ -160,33 +184,37 @@ app.get('/seuspedidos/:user', function(request,response){
     response.render('seuspedidos');
 });
 
-// port
-app.listen(3000);
+function send(n,e,p,pp) {
+    let getName = n
+    let getEmail = e
+    let getPassword = p
+    let getConfirmPassword = pp
+    let wrong = true;
 
-function send() {
-    let getName = document.querySelector('#boxName').value
-    let getEmail = document.querySelector('#boxEmail')
-    let getPassword = document.querySelector('#boxPassword').value
-    let getConfirmPassword = document.querySelector('#boxConfirmPassword').value
-    
     let regexnome = /\d+/
     let regexsenha = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
 
     if(regexnome.test(getName) == true || getName === ""){
 
-        alert('Nome não pode conter letras e o campo não pode ser vazio, tente novamente')
+        wrong = false;
+
     }
 
     if (regexsenha.test(getPassword) == false){
 
-        alert('A senha deve possuir letras e numeros, a senha não pode ser vazia e não pode ter menos que 8 caracteres')
-
+        wrong = false;
     }
 
     if (getPassword != getConfirmPassword){
 
-        alert('As senhas devem ser iguais')
+        wrong = false;
 
     }
 
+    return wrong;
+
 }
+
+// port
+app.listen(3000);
+
