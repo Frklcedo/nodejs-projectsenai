@@ -223,8 +223,6 @@ function send(n,e,p,pp) {
 
 }
 
-<<<<<<< HEAD
-=======
 function path() {
 
     if(user.nome == ''){
@@ -238,8 +236,6 @@ function path() {
 
 }
 
-
->>>>>>> 7b52cd545485f39aa8c87d536600813889424fe2
 // port
 app.listen(3000);
 
