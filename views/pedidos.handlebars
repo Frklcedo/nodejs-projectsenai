@@ -1,12 +1,13 @@
 <main class="container mx-auto form bg-light shadow-sm">
+    {{msg}}
     <form method="post" class="row text-center">
         <label class="col-12-xm disblock h4 mb-4">
             Informações do cliente
         </label>
-        <label class="col-12-xm disblock" for="nomeCliente">
+        <label class="col-12-xm disblock" for="nome">
             Seu nome
         </label>
-        <input class="shadow-sm col-12-xm io-input border-0 border-bottom p-2" type="text" name="nomeCliente" placeholder="Exemplo dos Santos" required>
+        <input class="shadow-sm col-12-xm io-input border-0 border-bottom p-2" type="text" name="nome" placeholder="Exemplo dos Santos" required>
         <label class="col-12-xm disblock mt-4" for="email">
             E-mail
         </label>
@@ -122,7 +123,7 @@
         <label for="comp-order" class="col-12-xm mt-4">
             Complemento de pedidos
         </label>
-        <textarea name="comp-order" class="shadow-sm col-12-xm io-input border-0 border-bottom p-2 comp" placeholder="Sabores, alergias, excessões, preferências etc..."></textarea>
+        <textarea name="comporder" class="shadow-sm col-12-xm io-input border-0 border-bottom p-2 comp" placeholder="Sabores, alergias, excessões, preferências etc..."></textarea>
         <input class="shadow container btn btn-outline-danger btn-block" type="submit" value="Enviar">
     </form>
 </main>

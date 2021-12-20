@@ -1,16 +1,16 @@
 <main class="container mx-auto form bg-light shadow-sm">
-    <form method="post" class="row text-center">
+    <form method="post" class="row text-center" action="/entrar">
         <label class="col-12-xm disblock h4 mb-4">
             Bem vindo!
         </label>
-        <label class="col-12-xm disblock" for="nomeCliente">
-            Seu nome
+        <label class="col-12-xm disblock" for="email">
+            Seu e-mail
         </label>
-        <input class="shadow-sm col-12-xm io-input border-0 border-bottom p-2" type="text" name="nomeCliente" placeholder="Exemplo dos Santos" required>
-         <label class="col-12-xm disblock" for="senhaCliente">
+        <input class="shadow-sm col-12-xm io-input border-0 border-bottom p-2" type="text" name="email" placeholder="exemplo@mail.com" required>
+         <label class="col-12-xm disblock" for="senha">
             Sua senha
         </label>
-        <input class="shadow-sm col-12-xm io-input border-0 border-bottom p-2" type="password" name="senhaCliente" placeholder="********" required>
+        <input class="shadow-sm col-12-xm io-input border-0 border-bottom p-2" type="password" name="senha" placeholder="********" required>
         <hr>
         <input class="shadow container btn btn-outline-danger btn-block" type="submit" value="Entrar">
     </form>
