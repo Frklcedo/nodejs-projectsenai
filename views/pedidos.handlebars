@@ -7,11 +7,16 @@
         <label class="col-12-xm disblock" for="nome">
             Seu nome
         </label>
-        <input class="shadow-sm col-12-xm io-input border-0 border-bottom p-2" type="text" name="nome" placeholder="Exemplo dos Santos" required>
+        <input class="shadow-sm col-12-xm io-input border-0 border-bottom p-2" type="text" name="nome" placeholder="Exemplo dos Santos" {{#if online}}
+        value={{usuario.nome}}
+        {{/if}}
+        required>
         <label class="col-12-xm disblock mt-4" for="email">
             E-mail
         </label>
-        <input class="shadow-sm col-12-xm io-input border-0 border-bottom p-2 mb-5" type="email" name="email" placeholder="exemplo@mail.com" required>
+        <input class="shadow-sm col-12-xm io-input border-0 border-bottom p-2 mb-5" type="email" name="email" placeholder="exemplo@mail.com" {{#if online}}
+        value={{usuario.email}}
+        {{/if}} required>
         <hr>
         <label class="col-12-xm disblock h4 mb-4">
             Endereço
@@ -19,23 +24,31 @@
         <label class="col-12-xm disblock" for="cep">
             CEP
         </label>
-        <input class="shadow-sm col-12-xm io-input border-0 border-bottom p-2 text-center" type="text" name="cep" placeholder="4X-XXX-XXX" maxlength="10" required>
+        <input class="shadow-sm col-12-xm io-input border-0 border-bottom p-2 text-center" type="text" name="cep" placeholder="4X-XXX-XXX" maxlength="10" required {{#if online}}
+        value={{usuario.cep}}
+        {{/if}}>
         <label class="col-9-xm disblock mt-4" for="address">
             Endereço/Logradouro
         </label>
-        <input class="shadow-sm col-9-xm io-input border-0 border-bottom p-2" type="text" name="address" placeholder="Rua, Alameda, Caminho etc" required>
+        <input class="shadow-sm col-9-xm io-input border-0 border-bottom p-2" type="text" name="address" placeholder="Rua, Alameda, Caminho etc" required {{#if online}}
+        value={{usuario.logradouro}}
+        {{/if}} >
         <label class="col-3-xm disblock mt-4" for="numaddress">
             nº
         </label>
-        <input class="shadow-sm col-3-xm io-input border-0 border-bottom p-2" type="text" name="numaddress" placeholder="19, 1000, 71..." min="1" required>
+        <input class="shadow-sm col-3-xm io-input border-0 border-bottom p-2" type="text" name="numaddress" placeholder="19, 1000, 71..." min="1" required {{#if online}}
+        value={{usuario.numeroLogradouro}}
+        {{/if}}>
         <label class="col-12-xm disblock mt-4" for="comp">
             Complemento
         </label>
-        <textarea class="shadow-sm comp col-12-xm io-input border-0 border-bottom p-2" name="comp" placeholder="Informações de possível importância..."></textarea>
+        <textarea class="shadow-sm comp col-12-xm io-input border-0 border-bottom p-2" name="comp" placeholder="Informações de possível importância..." id="compendarea">{{#if online}}{{usuario.complementoLogradouro}}{{/if}}</textarea>
         <label class="col-12-xm disblock mt-4" for="cidade">
             Cidade
         </label>
-        <input class="shadow-sm col-9-xm io-input border-0 border-bottom p-2" type="text" name="cidade" placeholder="São Paulo, Rio de Janeiro, Salvador..." required>
+        <input class="shadow-sm col-9-xm io-input border-0 border-bottom p-2" type="text" name="cidade" placeholder="São Paulo, Rio de Janeiro, Salvador..." required {{#if online}}
+        value={{usuario.cidade}}
+        {{/if}}>
         <label class="col-8-xm disblock mt-4" for="estado">
             Estado
         </label>

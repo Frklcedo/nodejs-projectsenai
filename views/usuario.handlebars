@@ -1,1 +1,110 @@
-<p></p>
+<main class="container mx-auto tb-pd shadow-sm">
+    {{#if root}} 
+        {{#each usuarios}}   
+            <h1 class="text-center mb-0">
+                <sub>{{dataValues.id}}</sub> {{dataValues.nome}}
+            </h1>
+            <p>
+                <sub>E-mail</sub>
+            </p>
+            <p class="text-center">
+                {{ dataValues.email}}
+            </p>
+            <p>
+                <sub>Senha</sub>
+            </p>
+            <p class="text-center">
+                {{ dataValues.senha}}
+            </p> 
+            <p>
+                <sub>CEP</sub>
+            </p>
+            <p class="text-center">
+                {{ dataValues.cep}}
+            </p>
+            <p>
+                <sub>logradouro</sub>
+            </p>
+            <p class="text-center">
+                {{ dataValues.logradouro}}
+            </p> 
+            <p>
+                <sub>Número</sub>
+            </p>
+            <p class="text-center">
+                {{ dataValues.numeroLogradouro}}
+            </p>
+            <p>
+                <sub>Complemento</sub>
+            </p>
+            <p class="text-center">
+                {{ dataValues.complementoLogradouro}}
+            </p> 
+            <p>
+                <sub>Cidade</sub>
+            </p>
+            <p class="text-center">
+                {{ dataValues.cidade}}
+            </p>
+            <p>
+                <sub>Estado</sub>
+            </p>
+            <p class="text-center">
+                {{ dataValues.estado}}
+            </p> 
+            <hr>
+        {{/each}}
+    {{else}}
+        <h1 class="text-center mb-0">
+            <sub>{{usuario.id}}</sub> {{usuario.nome}}
+        </h1>
+        <p>
+            <sub>E-mail</sub>
+        </p>
+        <p class="text-center">
+            {{ usuario.email}}
+        </p>
+        <p>
+            <sub>Senha</sub>
+        </p>
+        <p class="text-center">
+            {{ usuario.senha}}
+        </p> 
+        <p>
+            <sub>CEP</sub>
+        </p>
+        <p class="text-center">
+            {{ usuario.cep}}
+        </p>
+        <p>
+            <sub>logradouro</sub>
+        </p>
+        <p class="text-center">
+            {{ usuario.logradouro}}
+        </p> 
+        <p>
+            <sub>Número</sub>
+        </p>
+        <p class="text-center">
+            {{ usuario.numeroLogradouro}}
+        </p>
+        <p>
+            <sub>Complemento</sub>
+        </p>
+        <p class="text-center">
+            {{ usuario.complementoLogradouro}}
+        </p> 
+        <p>
+            <sub>Cidade</sub>
+        </p>
+        <p class="text-center">
+            {{ usuario.cidade}}
+        </p>
+        <p>
+            <sub>Estado</sub>
+        </p>
+        <p class="text-center">
+            {{ usuario.estado}}
+        </p>  
+    {{/if}}    
+    </main>
