@@ -1,0 +1,85 @@
+<main class="container mx-auto form bg-light shadow-sm">
+<div>
+
+    <h1>Seus Pedidos</h1>
+    
+</div>
+
+   <div class="container row mx-auto">
+            <h2 class="text-center">Minipizza 4-queijos</h2>
+            <table class="table table-striped table-warning border table-hover col-12">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            id
+                        </th>
+                        <th class="text-center">
+                            nome
+                        </th>
+                         <th class="text-center">
+                            email
+                        </th>
+                         <th class="text-center">
+                            cep
+                        </th>
+                         <th class="text-center">
+                            logradouro
+                        </th>
+                         <th class="text-center">
+                            numeroLogradouro
+                        </th>
+                         <th class="text-center">
+                            complementoLogradouro
+                        </th>
+                         <th class="text-center">
+                            cidade
+                        </th>
+                         <th class="text-center">
+                            estado
+                        </th>
+                         <th class="text-center">
+                            produtos
+                        </th>
+                        <th class="text-center">
+                            ComplementoProdutos
+                        </th>
+
+                    </tr>
+                </thead>
+                {{#each pedidos}}
+                <tr>
+                    <td>
+                        {{id}}
+                    </td>
+                    <td class="text-end">
+                        {{nome}}
+                    </td>
+                      <td class="text-end">
+                        {{cep}}
+                    </td>
+                      <td class="text-end">
+                        {{lorgradouro}}
+                    </td>
+                      <td class="text-end">
+                        {{numeroLogradouro}}
+                    </td>
+                      <td class="text-end">
+                        {{complementoLogradouro}}
+                    </td>
+                      <td class="text-end">
+                        {{cidade}}
+                    </td>
+                      <td class="text-end">
+                        {{estado}}
+                    </td>
+                      <td class="text-end">
+                        {{produtos}}
+                    </td>
+                      <td class="text-end">
+                        {{complementoProdutos}}
+                    </td>
+                </tr>
+                {{/each}}
+            </table>
+        </div>
+</main>

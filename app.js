@@ -68,7 +68,7 @@ app.use(bodyParser.json());
 app.use(urlencoded({ extended: false }));
 app.use(express.static('public'));
 // get and post
-app.get('/', function(request,response){
+app.get('/', function(request,response){ 
     response.render('index', { nome: user.nome, online: online  });
 });
 app.get('/entrar', function(request,response){
@@ -92,7 +92,9 @@ app.get('/tabela-nutricional', function(request,response){
 app.get('/seuspedidos', function(request,response){
     response.render('seuspedidos', { nome: user.nome, online: online  });
 });
-
+app.get('/usuario', function(request,response){
+    response.render('usuario', { nome: user.nome, online: online  });
+});
 app.post('/registrar', function(request, response){
     if(!send(request.body.nome,request.body.email,request.body.senha, request.body.confirmsenha)){
                 response.render('registrar',{nome: user.nome, online: online  ,msg: 'Não fui possível fazer o registro da conta: as senhas precisam ser iguais'});
@@ -169,7 +171,7 @@ app.post('/entrar', function(request,response){
     });
 
 });
-app.get('/sair/:user', function(request, response){
+app.get('/sair/', function(request, response){
     user = {
         id: null,
         nome: '',
@@ -183,7 +185,7 @@ app.get('/sair/:user', function(request, response){
         estado: ''
     }
     online = false;
-    response.redirect('/');
+    response.redirect('/entrar');
 });
 
 // user variables
@@ -208,12 +210,21 @@ app.get('/seuspedidos/:user', function(request,response){
             email: user.email
         }
     }).then(function(pedidos){
+        console.log(pedidos)
         response.render('seuspedidos', { pedidos: pedidos, nome: user.nome, online: online });
     });
     response.render('seuspedidos', { pedidos: pedidos, nome: user.nome, online: online });
 }
 );
-
+app.get('/todososspedidos/:user', function(request,response){
+    Pedidos.findAll({
+    
+    }).then(function(pedidos){
+        response.render('todososspedidos', { pedidos: pedidos, nome: user.nome, online: online });
+    });
+    response.render('todososspedidos', { pedidos: pedidos, nome: user.nome, online: online });
+}
+);
 function send(n,e,p,pp) {
     let getName = n
     let getEmail = e
