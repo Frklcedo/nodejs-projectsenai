@@ -1,110 +1,173 @@
+<link rel="stylesheet" href="../css/styleusario.css" />
 <main class="container mx-auto tb-pd shadow-sm">
     {{#if root}} 
         {{#each usuarios}}   
-            <h1 class="text-center mb-0">
-                <sub>{{dataValues.id}}</sub> {{dataValues.nome}}
+            <h1 class="text-center mb-0" id="titulo">
+                <sub>Id: {{dataValues.id}}</sub>Usuário: {{dataValues.nome}}
             </h1>
-            <p>
-                <sub>E-mail</sub>
-            </p>
-            <p class="text-center">
-                {{ dataValues.email}}
-            </p>
-            <p>
-                <sub>Senha</sub>
-            </p>
-            <p class="text-center">
-                {{ dataValues.senha}}
-            </p> 
-            <p>
-                <sub>CEP</sub>
-            </p>
-            <p class="text-center">
-                {{ dataValues.cep}}
-            </p>
-            <p>
-                <sub>logradouro</sub>
-            </p>
-            <p class="text-center">
-                {{ dataValues.logradouro}}
-            </p> 
-            <p>
-                <sub>Número</sub>
-            </p>
-            <p class="text-center">
-                {{ dataValues.numeroLogradouro}}
-            </p>
-            <p>
-                <sub>Complemento</sub>
-            </p>
-            <p class="text-center">
-                {{ dataValues.complementoLogradouro}}
-            </p> 
-            <p>
-                <sub>Cidade</sub>
-            </p>
-            <p class="text-center">
-                {{ dataValues.cidade}}
-            </p>
-            <p>
-                <sub>Estado</sub>
-            </p>
-            <p class="text-center">
-                {{ dataValues.estado}}
-            </p> 
-            <hr>
+            <div class=tabela>
+            <table class="tableuser">
+               <thead>
+                   <tr>
+                       <th class="text-center">
+                         <sub>Id: {{dataValues.id}}</sub> 
+                       </th>
+                       <th class="text-center">
+                        <sub>Usuário: {{dataValues.nome}}</sub>
+                       </th>
+                   </tr>
+                   </h1>
+                </thead>
+                <tbody>
+                   <tr  class="tr-color1">
+                       <th>
+                           <sub>E-mail</sub>
+                       </th>
+                       <th>
+                             {{ dataValues.email}}
+                       </td>
+                   </tr>
+                   <tr>
+                       <th>
+                            <sub>Senha</sub>
+                       </th>
+                       <td>
+                           {{ dataValues.senha}}
+                       </td>
+                   </tr>
+                   <tr  class="tr-color1">
+                       <th>
+                            <sub>CEP</sub>
+                       </th>
+                       <td>
+                           {{ dataValues.cep}}
+                       </td>
+                   </tr>
+                   <tr>
+                       <th>
+                            <sub>logradouro</sub>
+                       </th>
+                       <td>
+                            {{dataValues.logradouro}}
+                       </td>
+                   </tr>
+                   <tr  class="tr-color1">
+                       <th>
+                           <sub>Número</sub>
+                       </th>
+                       <td>
+                           {{dataValues.numeroLogradouro}}
+                       </td>
+                   </tr>
+                   <tr>
+                       <th>
+                           <sub>Complemento</sub>
+                       </th>
+                       <td>
+                           {{dataValues.complementoLogradouro}}
+                       </td>
+                   </tr  class="tr-color1">
+                   <tr>
+                       <th>
+                           <sub>Cidade</sub>
+                       </th>
+                       <td>
+                           {{dataValues.cidade}}
+                       </td>
+                   </tr>
+                   <tr>
+                       <th>
+                            <sub>Estado</sub>
+                       </th>
+                       <td>
+                           {{ dataValues.estado}}
+                       </td>
+                   </tr>
+               </tbody>
+           </table>
+           </div>
         {{/each}}
     {{else}}
-        <h1 class="text-center mb-0">
-            <sub>{{usuario.id}}</sub> {{usuario.nome}}
-        </h1>
-        <p>
-            <sub>E-mail</sub>
-        </p>
-        <p class="text-center">
-            {{ usuario.email}}
-        </p>
-        <p>
-            <sub>Senha</sub>
-        </p>
-        <p class="text-center">
-            {{ usuario.senha}}
-        </p> 
-        <p>
-            <sub>CEP</sub>
-        </p>
-        <p class="text-center">
-            {{ usuario.cep}}
-        </p>
-        <p>
-            <sub>logradouro</sub>
-        </p>
-        <p class="text-center">
-            {{ usuario.logradouro}}
-        </p> 
-        <p>
-            <sub>Número</sub>
-        </p>
-        <p class="text-center">
-            {{ usuario.numeroLogradouro}}
-        </p>
-        <p>
-            <sub>Complemento</sub>
-        </p>
-        <p class="text-center">
-            {{ usuario.complementoLogradouro}}
-        </p> 
-        <p>
-            <sub>Cidade</sub>
-        </p>
-        <p class="text-center">
-            {{ usuario.cidade}}
-        </p>
-        <p>
-            <sub>Estado</sub>
-        </p>
-        <p class="text-center">
-            {{ usuario.estado}}
-        </p>  
+    <div class="tabela">
+      <table class="tableuser">
+               <thead>
+                   <tr>
+                       <th class="text-center">
+                         <sub>Id: {{usuario.id}}</sub> 
+                       </th>
+                       <th class="text-center">
+                        <sub>Usuário: {{usuario.nome}}</sub>
+                       </th>
+                   </tr>
+                   </h1>
+                </thead>
+                <tbody>
+                   <tr class="tr-color1">
+                       <th>
+                           <sub>E-mail</sub>
+                       </th>
+                       <td>
+                             {{ usuario.email}}
+                       </td>
+                   </tr>
+                   <tr class="tr-color2">
+                       <th>
+                            <sub>Senha</sub>
+                       </th>
+                       <td>
+                           {{ usuario.senha}}
+                       </td>
+                   </tr>
+                   <tr  class="tr-color1">
+                       <th>
+                            <sub>CEP</sub>
+                       </th>
+                       <td>
+                           {{ usuario.cep}}
+                       </td>
+                   </tr>
+                   <tr class="tr-color2">
+                       <th>
+                            <sub>Logradouro</sub>
+                       </th>
+                       <td>
+                            {{usuario.logradouro}}
+                       </td>
+                   </tr>
+                   <tr  class="tr-color1">
+                       <th>
+                           <sub>Número</sub>
+                       </th>
+                       <td>
+                           {{usuario.numeroLogradouro}}
+                       </td>
+                   </tr>
+                   <tr class="tr-color2">
+                       <th>
+                           <sub>Complemento</sub>
+                       </th>
+                       <td>
+                           {{usuario.complementoLogradouro}}
+                       </td>
+                   </tr>
+                   <tr  class="tr-color1">
+                       <th>
+                           <sub>Cidade</sub>
+                       </th>
+                       <td>
+                           {{usuario.cidade}}
+                       </td>
+                   </tr>
+                   <tr class="tr-color2">
+                       <th>
+                            <sub>Estado</sub>
+                       </th>
+                       <td>
+                           {{ usuario.estado}}
+                       </td>
+                   </tr>
+               </tbody>
+           </table>
+           </div>
     {{/if}}    
     </main>

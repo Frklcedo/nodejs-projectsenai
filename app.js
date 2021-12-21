@@ -128,12 +128,12 @@ app.get('/todosospedidos', function(request,response){
     }
 });
 app.get('/usuario', function(request,response){
-    if(user.id === 1){
-        response.redirect('/usuario/' + user.nome);
+    response.redirect('/usuario/' + user.nome);
+    /*if(user.id === 1){
     }
     else{
         response.redirect('/' + user.nome);
-    }
+    }*/
 });
 app.post('/registrar', function(request, response){
     if(!send(request.body.nome,request.body.email,request.body.senha, request.body.confirmsenha)){

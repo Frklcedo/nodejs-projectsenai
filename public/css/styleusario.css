@@ -1,0 +1,27 @@
+.tabela{
+    display: flex;
+}
+.tableuser{   
+    border: 1px solid #d68089;
+}
+th, td{
+    border: 1px solid #d68089;
+    text-align: center;
+}
+th{
+    font-weight: 900;
+}
+table{
+    width: 500px;
+    margin: auto;
+}
+.tr-color1{
+    background-color: #DC3545;
+    color: white;
+}
+.tr-color2{
+    color: #DC3545;
+}
+.text-center{
+    color: #DC3545;
+}
