@@ -63,45 +63,70 @@ var user = {
     estado: ''
 }
 var online = false;
+var root = false;
 
 app.use(bodyParser.json());
 app.use(urlencoded({ extended: false }));
 app.use(express.static('public'));
 // get and post
 app.get('/', function(request,response){ 
-    response.render('index', { nome: user.nome, online: online  });
+    if(user.id != null){
+        response.redirect('/' + user.nome);
+    }
+    response.render('index', { nome: user.nome, online: online, root: root});
 });
 app.get('/entrar', function(request,response){
-    response.render('entrar', { nome: user.nome, online: online  });
+    if(user.id != null){
+        response.redirect('/entrar/' + user.nome);
+    }
+    response.render('entrar', { nome: user.nome, online: online, root: root });
 });
 app.get('/registrar', function(request,response){
-    response.render('registrar', { nome: user.nome, online: online  });
+    if(user.id != null){
+        response.redirect('/registrar' + user.nome);
+    }
+    response.render('registrar', { nome: user.nome, online: online, root: root });
 });
 app.get('/doces', function(request,response){
-    response.render('doces', { nome: user.nome, online: online  });
+    if(user.id != null){
+        response.redirect('/doces/' + user.nome);
+    }
+    response.render('doces', { nome: user.nome, online: online, root: root});
 });
 app.get('/salgados', function(request,response){
-    response.render('salgados', { nome: user.nome, online: online  });
+    if(user.id != null){
+        response.redirect('/salgados/' + user.nome);
+    }
+    response.render('salgados', { nome: user.nome, online: online, root: root});
 });
 app.get('/pedidos', function(request,response){
-    response.render('pedidos', { nome: user.nome, online: online  });
+    if(user.id != null){
+        response.redirect('/pedidos/' + user.nome);
+    }
+    response.render('pedidos', { nome: user.nome, online: online, root: root});
 });
 app.get('/tabela-nutricional', function(request,response){
-    response.render('tbnutri', { nome: user.nome, online: online  });
+    if(user.id != null){
+        response.redirect('/tabela-nutricional/' + user.nome);
+    }
+    response.render('tbnutri', { nome: user.nome, online: online, root: root });
 });
 app.get('/seuspedidos', function(request,response){
-    response.render('seuspedidos', { nome: user.nome, online: online  });
+    response.redirect('/seuspedidos/' + user.nome);
+});
+app.get('/todosospedidos', function(request,response){
+    response.redirect('/todosospedidos/' + user.nome);
 });
 app.get('/usuario', function(request,response){
-    response.render('usuario', { nome: user.nome, online: online  });
+    response.render('usuario', { nome: user.nome, online: online, root: root });
 });
 app.post('/registrar', function(request, response){
     if(!send(request.body.nome,request.body.email,request.body.senha, request.body.confirmsenha)){
-                response.render('registrar',{nome: user.nome, online: online  ,msg: 'Não fui possível fazer o registro da conta: as senhas precisam ser iguais'});
+                response.render('registrar',{nome: user.nome, online: online  ,msg: 'Não fui possível fazer o registro da conta: as senhas precisam ser iguais', root: root});
     }
     Usuarios.findOne({ where: { email: request.body.email }}).then(function(user){
             if(user != null){        
-                response.render('registrar',{nome: user.nome, online: online  ,msg: 'Não fui possível fazer o registro da conta: o e-mail fornecido já está em uso'});
+                response.render('registrar',{nome: user.nome, online: online  ,msg: 'Não fui possível fazer o registro da conta: o e-mail fornecido já está em uso', root: root});
             }
     }).catch();
     Usuarios.create({
@@ -115,9 +140,9 @@ app.post('/registrar', function(request, response){
         cidade: request.body.cidade,
         estado: request.body.estado        
     }).then(function(){
-        response.render('registrar',{nome: user.nome, online: online , msg: 'Registro feito com sucesso'});
+        response.render('registrar',{nome: user.nome, online: online , msg: 'Registro feito com sucesso', root: root});
     }).catch(function(){
-        response.render('registrar',{nome: user.nome, online: online ,msg: 'Não fui possível fazer o registro da conta'});
+        response.render('registrar',{nome: user.nome, online: online ,msg: 'Não fui possível fazer o registro da conta', root: root});
     });
 });
 app.post('/pedidos', function(request, response){
@@ -136,18 +161,20 @@ app.post('/pedidos', function(request, response){
         response.render('pedidos', {
             nome: user.nome ,
             msg: 'Pedido feito com sucesso',
-            online: online 
+            online: online,
+            root: root 
         });
     }).catch(function(){
         response.render('pedidos', {
             nome: user.nome ,
             msg: 'Não foi possível realizar o pedido',
             msg2: 'Tente novamente mais tarde', 
-            online: online 
+            online: online,
+            root: root
         });
     });
 });
-app.post('/entrar', function(request,response){
+app.post('/entrar/', function(request,response){
     Usuarios.findOne({ where: { 
         email: request.body.email,
         senha: request.body.senha
@@ -165,9 +192,13 @@ app.post('/entrar', function(request,response){
             estado: usuario.estado
         }
         online = true;
+        if(user.id == 1 ){
+            root = true;
+        }
+        console.log(root);
         response.redirect('/' + user.nome);        
     }).catch(function(){
-        response.render('entrar', { nome: user.nome, online: online ,msg: 'E-mail ou senhas incorretos'});
+        response.render('entrar', { nome: user.nome, online: online ,msg: 'E-mail ou senhas incorretos' , root: root });
     });
 
 });
@@ -185,24 +216,25 @@ app.get('/sair/', function(request, response){
         estado: ''
     }
     online = false;
+    root = false;
     response.redirect('/entrar');
 });
 
 // user variables
 app.get('/:user', function(request,response){
-    response.render('index', { nome: user.nome, online: online  });
+    response.render('index', { nome: user.nome, online: online, root: root });
 });
 app.get('/doces/:user', function(request,response){
-    response.render('doces', { nome: user.nome, online: online });
+    response.render('doces', { nome: user.nome, online: online, root: root });
 });
 app.get('/salgados/:user', function(request,response){
-    response.render('salgados', { nome: user.nome, online: online  });
+    response.render('salgados', { nome: user.nome, online: online, root: root });
 });
 app.get('/pedidos/:user', function(request,response){
-    response.render('pedidos', { nome: user.nome, online: online  });
+    response.render('pedidos', { nome: user.nome, online: online, root: root });
 });
 app.get('/tabela-nutricional/:user', function(request,response){
-    response.render('tbnutri', { nome: user.nome, online: online  });
+    response.render('tbnutri', { nome: user.nome, online: online, root: root });
 });
 app.get('/seuspedidos/:user', function(request,response){
     Pedidos.findAll({
@@ -210,19 +242,16 @@ app.get('/seuspedidos/:user', function(request,response){
             email: user.email
         }
     }).then(function(pedidos){
-        console.log(pedidos)
-        response.render('seuspedidos', { pedidos: pedidos, nome: user.nome, online: online });
-    });
-    response.render('seuspedidos', { pedidos: pedidos, nome: user.nome, online: online });
+        console.log(pedidos);
+        response.render('seuspedidos', { pedidos: pedidos, nome: user.nome, online: online, root: root });
+    }).catch();
 }
 );
-app.get('/todososspedidos/:user', function(request,response){
-    Pedidos.findAll({
-    
-    }).then(function(pedidos){
-        response.render('todososspedidos', { pedidos: pedidos, nome: user.nome, online: online });
-    });
-    response.render('todososspedidos', { pedidos: pedidos, nome: user.nome, online: online });
+app.get('/todosospedidos/:user', function(request,response){
+    Pedidos.findAll().then(function(pedidos){
+        console.log(pedidos);
+        response.render('todosospedidos', { pedidos: pedidos, nome: user.nome, online: online, root: root });
+    }).catch();
 }
 );
 function send(n,e,p,pp) {
@@ -253,19 +282,6 @@ function send(n,e,p,pp) {
     }
 
     return wrong;
-
-}
-
-function path() {
-
-    if(user.nome == ''){
-
-        return '/';
-
-    }else{
-
-        return '/' + user.nome;
-    }
 
 }
 

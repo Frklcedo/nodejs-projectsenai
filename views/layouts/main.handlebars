@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
@@ -40,12 +41,21 @@
                   nutricional</button></a>
             </li>
             {{#if online}}
-            <li class="nav-item text-center m-1">
-              <a
-                href="/seuspedidos"
-                class="nav-link bg-white d-grid gap-3 p-0"
-              ><button type="button" class="btn btn-outline-danger btn-block">Seus Pedidos</button></a>
-            </li>
+              {{#if root}}
+                <li class="nav-item text-center m-1">
+                  <a
+                    href="/todosospedidos"
+                    class="nav-link bg-white d-grid gap-3 p-0"
+                  ><button type="button" class="btn btn-outline-danger btn-block">Todos os pedidos</button></a>
+                </li>
+              {{else}}
+                <li class="nav-item text-center m-1">
+                  <a
+                    href="/seuspedidos"
+                    class="nav-link bg-white d-grid gap-3 p-0"
+                  ><button type="button" class="btn btn-outline-danger btn-block">Seus Pedidos</button></a>
+                </li>
+              {{/if}}
             {{/if}}
           </ul>
         </li>
