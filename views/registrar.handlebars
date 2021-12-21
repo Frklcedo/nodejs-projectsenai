@@ -1,5 +1,5 @@
 <main class="container mx-auto form bg-light shadow-sm">
-    {{msg}} 
+    <p class="text-center text-danger">{{msg}}</p> 
     <form action="/registrar" method="post" class="row text-center">
         <label class="col-12-xm disblock h4 mb-4">
             Registro do cliente
@@ -78,6 +78,8 @@
             <option value="TO">TO</option>
         </select>
         <hr class="mt-4">
-        <input class="shadow container btn btn-outline-danger btn-block" type="submit" onclick="send()" value="Enviar">
+        <input class="shadow container btn btn-outline-danger btn-block" type="submit" value="Enviar" onclick="send();" >
+        <script src="script.js"></script>
+        <script src="/public/script.js"></script>
     </form>
 </main>

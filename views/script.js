@@ -8,15 +8,16 @@ function send() {
     let regexsenha = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
 
     if(regexnome.test(getName) == true || getName === ""){
-        alert('Nome não pode conter letras e o campo não pode ser vazio, tente novamente');
+        alert('Nome não pode conter letras e o campo não pode ser vazio, tente novamente')
     }
 
     if (regexsenha.test(getPassword) == false){
-        alert('A senha deve possuir letras e numeros, a senha não pode ser vazia e não pode ter menos que 8 caracteres');
+        alert('A senha deve possuir letras e numeros, a senha não pode ser vazia e não pode ter menos que 8 caracteres')
     }
 
     if (getPassword != getConfirmPassword){
-        alert('As senhas devem ser iguais');
+        alert('As senhas devem ser iguais')
     }
 
 }
+
