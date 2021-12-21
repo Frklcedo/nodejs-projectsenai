@@ -174,6 +174,35 @@ app.post('/pedidos', function(request, response){
         });
     });
 });
+app.post('/pedidos:user', function(request, response){
+    Pedidos.create({
+        nome: request.body.nome,
+        email: request.body.email,
+        cep: request.body.cep,
+        logradouro: request.body.address,
+        numeroLogradouro: request.body.numaddress,
+        complementoLogradouro: request.body.comp,
+        cidade: request.body.cidade,
+        estado: request.body.estado,
+        produtos: request.body.orders,
+        complementoProdutos: request.body.comporder
+    }).then(function(){
+        response.render('pedidos', {
+            nome: user.nome ,
+            msg: 'Pedido feito com sucesso',
+            online: online,
+            root: root 
+        });
+    }).catch(function(){
+        response.render('pedidos', {
+            nome: user.nome ,
+            msg: 'Não foi possível realizar o pedido',
+            msg2: 'Tente novamente mais tarde', 
+            online: online,
+            root: root
+        });
+    });
+});
 app.post('/entrar/', function(request,response){
     Usuarios.findOne({ where: { 
         email: request.body.email,

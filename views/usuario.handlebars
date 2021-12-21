@@ -1,1 +1,63 @@
-<p></p>
+<div class="container row mx-auto">
+            <h2 class="text-center">Dados do usuário</h2>
+            <table class="table table-striped table-warning border table-hover col-12">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            id
+                        </th>
+                        <th class="text-center">
+                            nome
+                        </th>
+                         <th class="text-center">
+                            email
+                        </th>
+                         <th class="text-center">
+                            cep
+                        </th>
+                         <th class="text-center">
+                            logradouro
+                        </th>
+                         <th class="text-center">
+                            numeroLogradouro
+                        </th>
+                         <th class="text-center">
+                            complementoLogradouro
+                        </th>
+                         <th class="text-center">
+                            cidade
+                        </th>
+                         <th class="text-center">
+                            estado
+                        </th>
+                    </tr>
+                </thead>
+                {{#each usuarios}}
+                <tr>
+                    <td>
+                        {{dataValues.id}}
+                    </td>
+                    <td class="text-end">
+                        {{dataValues.nome}}
+                    </td>
+                      <td class="text-end">
+                        {{dataValues.cep}}
+                    </td>
+                      <td class="text-end">
+                        {{dataValues.logradouro}}
+                    </td>
+                      <td class="text-end">
+                        {{dataValues.numeroLogradouro}}
+                    </td>
+                      <td class="text-end">
+                        {{dataValues.complementoLogradouro}}
+                    </td>
+                      <td class="text-end">
+                        {{dataValues.cidade}}
+                    </td>
+                      <td class="text-end">
+                        {{dataValues.estado}}
+                    </td>
+                </tr>
+                {{/each}}
+            </table>

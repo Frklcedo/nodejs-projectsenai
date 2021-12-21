@@ -2,7 +2,7 @@
 const Sequelize = require('sequelize');
 // new Sequelize(banco de dados, login, senha)
 // É necessário criar banco de dados >> usersdciacat
-const sequelize = new Sequelize('usersdciacat', 'root', 'root',{
+const sequelize = new Sequelize('usersdciacat', 'root', '!josias1997',{
     host: 'localhost',
     dialect: 'mysql'
 })/*then(function(){
