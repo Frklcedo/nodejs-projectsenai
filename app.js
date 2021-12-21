@@ -146,13 +146,14 @@ app.get('/usuario', function(request,response){
     }*/
 });
 app.post('/registrar', function(request, response){
-    msg: '';
     if(!send(request.body.nome,request.body.email,request.body.senha, request.body.confirmsenha)){
+        msg = 'Não foi possível fazer o registro de conta' 
+        response.render('registrar',{nome: user.nome, online: online  ,msg: msg, root: root});
     }
     Usuarios.findOne({ where: { email: request.body.email }}).then(function(user){
         if(user != null){       
             msg = 'Não foi possível fazer o registro de conta' 
-            response.redirect('/registrar');
+            response.render('registrar',{nome: user.nome, online: online  ,msg: msg, root: root});
         }
     }).catch();
     Usuarios.create({
@@ -367,8 +368,7 @@ function send(n,e,p,pp) {
     let getEmail = e
     let getPassword = p
     let getConfirmPassword = pp
-    let wrong = true;
-    console.log(n,e,p,pp);
+    var wrong = true;
     let regexnome = /\d+/
     let regexsenha = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
 
@@ -388,7 +388,7 @@ function send(n,e,p,pp) {
         wrong = false;
 
     }
-
+    console.log(wrong);
     return wrong;
 
 }

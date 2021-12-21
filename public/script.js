@@ -3,7 +3,7 @@ function send() {
     let getEmail = document.querySelector('#boxEmail').value
     let getPassword = document.querySelector('#boxPassword').value
     let getConfirmPassword = document.querySelector('#boxConfirmPassword').value
-
+    console.log(get);
     let regexnome = /\d+/
     let regexsenha = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
 
