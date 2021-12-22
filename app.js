@@ -166,7 +166,8 @@ app.post('/registrar', function(request, response){
         complementoLogradouro: request.body.comp,
         cidade: request.body.cidade,
         estado: request.body.estado        
-    }).then(function(){
+    }).then(function(usuario){
+        console.log(usuario);
         msg = 'Registro feito com sucesso';
         response.render('registrar',{nome: user.nome, online: online , msg: msg, root: root});
     }).catch(function(){
