@@ -29,24 +29,30 @@ Usuarios.findAll({
         id: 1
     }
 }).then(function(usuarios){
-    Usuarios.update({
-        nome: 'root',
-        email: 'root',
-        senha: 'root',
-        adm: true
-    },
-    {
-        where:{
-            id: 1
-        }
-    });
+    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',usuarios);
+    if(usuarios.length == 0){
+        Usuarios.create({
+            nome: 'root',
+            email: 'root',
+            senha: 'root',
+            adm: true
+        });
+    }
+    else{
+        Usuarios.update({
+            nome: 'root',
+            email: 'root',
+            senha: 'root',
+            adm: true
+        },
+        {
+            where:{
+                id: 1
+            }
+        });        
+    }
 }).catch(function(){
-    Usuarios.create({
-        nome: 'root',
-        email: 'root',
-        senha: 'root',
-        adm: true
-    });
+    
 });
 
 // Variáveis globais
@@ -147,13 +153,11 @@ app.get('/usuario', function(request,response){
 });
 app.post('/registrar', function(request, response){
     if(!send(request.body.nome,request.body.email,request.body.senha, request.body.confirmsenha)){
-        msg = 'Não foi possível fazer o registro de conta' 
-        response.render('registrar',{nome: user.nome, online: online  ,msg: msg, root: root});
+        response.render('registrar',{nome: user.nome, online: online  ,msg: 'Não foi possível fazer o registro de conta' , root: root});
     }
     Usuarios.findOne({ where: { email: request.body.email }}).then(function(user){
         if(user != null){       
-            msg = 'Não foi possível fazer o registro de conta' 
-            response.render('registrar',{nome: user.nome, online: online  ,msg: msg, root: root});
+            response.render('registrar',{nome: user.nome, online: online  ,msg: 'Não foi possível fazer o registro de conta', root: root});
         }
     }).catch();
     Usuarios.create({
