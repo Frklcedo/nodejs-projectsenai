@@ -2,93 +2,93 @@
 <main class="container mx-auto form bg-light shadow-sm">
     <h2 class="text-center">Pedidos do cliente</h2>
     {{#each pedidos}}
-    <div class="tabela">
-        <table class="tabelauser">
-            <thead>
-                <tr>
-                    <th class="text-center">
-                        <sub>ID: {{dataValues.id}}</sub>
-                    </th>
-                    <td class="text-center">
-                        Usuário: {{dataValues.nome}}
-                    </td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="tr-color1">
-                    <th>
-                        <sub>Produtos</sub>
-                    </th>
-                    <td>
-                        {{dataValues.produtos}}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        <sub>Complemento</sub>
-                    </th>
-                    <td>
-                        {{dataValues.complementoProdutos}}
-                    </td>
-                </tr>
-                <tr class="tr-color1">
-                    <th>
-                        <sub>E-mail</sub>
-                    </th>
-                    <td>
-                        {{dataValues.email}}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        <sub>Cep</sub>
-                    </th>
-                    <td>
-                        {{dataValues.cep}}
-                    </td>
-                </tr>
-                <tr class="tr-color1">
-                    <th>
-                        <sub>Logradouro</sub>
-                    </th>
-                    <td>
-                        {{dataValues.logradouro}}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        <sub>Número</sub>
-                    </th>
-                    <td>
-                        {{dataValues.numeroLogradouro}}
-                    </td>
-                </tr>
-                <tr class="tr-color1">
-                    <th>
-                        <sub>Complemento</sub>
-                    </th>
-                    <td>
-                        {{dataValues.complementoLogradouro}}
-                    </td>
-                <tr>
-                    <th>
-                        <sub>Cidade</sub>
-                    </th>
-                    <td>
-                        {{dataValues.cidade}}
-                    </td>
-                </tr>
-                <tr class="tr-color1">
-                    <th>
-                        <sub>Estado</sub>
-                    </th>
-                    <td>
-                        {{ dataValues.estado}}
-                    </td>
-                </tr>
-            </tbody>
-            <hr><br>
-            {{/each}}
-        </table>
-    </div>
+        <div class="tabela container">
+            <table class="tabelauser">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            <sub>ID: {{dataValues.id}}</sub>
+                        </th>
+                        <td class="text-center">
+                            Usuário: {{dataValues.nome}}
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="tr-color1">
+                        <th>
+                            <sub>Produtos</sub>
+                        </th>
+                        <td>
+                            {{dataValues.produtos}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <sub>Complemento</sub>
+                        </th>
+                        <td>
+                            {{dataValues.complementoProdutos}}
+                        </td>
+                    </tr>
+                    <tr class="tr-color1">
+                        <th>
+                            <sub>E-mail</sub>
+                        </th>
+                        <td>
+                            {{dataValues.email}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <sub>Cep</sub>
+                        </th>
+                        <td>
+                            {{dataValues.cep}}
+                        </td>
+                    </tr>
+                    <tr class="tr-color1">
+                        <th>
+                            <sub>Logradouro</sub>
+                        </th>
+                        <td>
+                            {{dataValues.logradouro}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <sub>Número</sub>
+                        </th>
+                        <td>
+                            {{dataValues.numeroLogradouro}}
+                        </td>
+                    </tr>
+                    <tr class="tr-color1">
+                        <th>
+                            <sub>Complemento</sub>
+                        </th>
+                        <td>
+                            {{dataValues.complementoLogradouro}}
+                        </td>
+                    <tr>
+                        <th>
+                            <sub>Cidade</sub>
+                        </th>
+                        <td>
+                            {{dataValues.cidade}}
+                        </td>
+                    </tr>
+                    <tr class="tr-color1">
+                        <th>
+                            <sub>Estado</sub>
+                        </th>
+                        <td>
+                            {{ dataValues.estado}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr><br>
+    {{/each}}
 </main>
