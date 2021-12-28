@@ -91,6 +91,7 @@ app.get('/entrar', function(request,response){
     response.render('entrar', { nome: user.nome, online: online, root: root });
 });
 app.get('/registrar', function(request,response){
+    msg = '';
     if(user.id != null){
         response.redirect('/' + user.nome);
     }
@@ -153,34 +154,38 @@ app.get('/usuario', function(request,response){
 });
 app.post('/registrar', function(request, response){
     if(!send(request.body.nome,request.body.email,request.body.senha, request.body.confirmsenha)){
-        response.render('registrar',{nome: user.nome, online: online  ,msg: 'Não foi possível fazer o registro de conta' , root: root});
+        msg = 'Nome e/ou senha inválida';
+        response.render('registrar',{nome: user.nome, online: online  ,msg: msg , root: root});
     }
-    Usuarios.findOne({ where: { email: request.body.email }}).then(function(user){
-        if(user != null){       
-            response.render('registrar',{nome: user.nome, online: online  ,msg: 'Não foi possível fazer o registro de conta', root: root});
-        }
-    }).catch();
-    Usuarios.create({
-        nome: request.body.nome, 
-        email: request.body.email,
-        senha: request.body.senha,
-        cep: request.body.cep,
-        logradouro: request.body.address,
-        numeroLogradouro: request.body.numaddress,
-        complementoLogradouro: request.body.comp,
-        cidade: request.body.cidade,
-        estado: request.body.estado        
-    }).then(function(usuario){
-        console.log(usuario);
-        msg = 'Registro feito com sucesso';
-        response.render('registrar',{nome: user.nome, online: online , msg: msg, root: root});
-    }).catch(function(){
-        msg = 'Não fui possível fazer o registro da conta';
-        response.render('registrar',{nome: user.nome, online: online ,msg: msg, root: root});
-    });
+    else{
+        Usuarios.findOne({ where: { email: request.body.email }}).then(function(user){
+            if(user != null){       
+                msg = 'Não foi possível fazer o registro de conta';
+                response.render('registrar',{nome: user.nome, online: online  ,msg: msg, root: root});
+            }
+        }).catch();
+        Usuarios.create({
+            nome: request.body.nome, 
+            email: request.body.email,
+            senha: request.body.senha,
+            cep: request.body.cep,
+            logradouro: request.body.address,
+            numeroLogradouro: request.body.numaddress,
+            complementoLogradouro: request.body.comp,
+            cidade: request.body.cidade,
+            estado: request.body.estado        
+        }).then(function(usuario){
+            console.log(usuario);
+            msg = 'Registro feito com sucesso';
+            response.render('registrar',{nome: user.nome, online: online , msg: msg, root: root});
+        }).catch(function(){
+            msg = 'Não fui possível fazer o registro da conta';
+            response.render('registrar',{nome: user.nome, online: online ,msg: msg, root: root});
+        });
+    }
 });
 app.post('/pedidos', function(request, response){
-    if(typeof request.body.orders != String){
+    if(typeof request.body.orders != typeof "Olá"){
         var produtosEscolhidos = '';
         request.body.orders.forEach(function(produtoEscolhido) {
             produtosEscolhidos += produtoEscolhido + ', ';
@@ -377,13 +382,17 @@ function send(n,e,p,pp) {
     let regexnome = /\d+/
     let regexsenha = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
 
+    console.log(n,e,p,pp);
+
     if(regexnome.test(getName) == true || getName === ""){
 
         wrong = false;
 
+        console.log('Nome nulo ou com números');
+
     }
 
-    if (regexsenha.test(getPassword) == false){
+    if (regexsenha.test(getPassword) == true){
 
         wrong = false;
     }
@@ -391,6 +400,7 @@ function send(n,e,p,pp) {
     if (getPassword != getConfirmPassword){
 
         wrong = false;
+        console.log('As senhas são diferentes');
 
     }
     console.log(wrong);
