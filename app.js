@@ -389,6 +389,7 @@ function send(n,e,p,pp) {
         wrong = false;
 
         console.log('Nome nulo ou com números');
+        
 
     }
 

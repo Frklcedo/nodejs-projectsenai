@@ -1,4 +1,4 @@
-function send() {
+function sended() {
     console.log('Help');
     let getName = document.querySelector('#boxName').value
     let getEmail = document.querySelector('#boxEmail').value
